@@ -1,0 +1,26 @@
+<html>
+  <body>
+    <!-- USING CmsLess: -->
+    <h1>Site Header</h1>
+    <ul>
+      <li><a href="#foo">Foo</a>
+      <li><a href="#bar">Bar</a>
+      <li><a href="#baz">Page that does not exist</a>
+    </ul>
+    <div id="cms-less-destination">
+        <!-- will be populated from cms-less-content/pagename.html -->
+        <!--    where the pagename is the hash up to the last hyphen -->
+        <!--    and if there is no hash, pagename is 'index' -->
+        <!--    and if the page can't be loaded, the pagename is '404' -->
+   </div>
+
+   <!-- SETUP for CmsLess: -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+   <script src="js/lib/cms-less/cms-less.js"></script>
+   <script type="text/javascript">
+     $(function() {
+       CmsLess.Init({});
+     });
+   </script>
+ </body>
+</html>

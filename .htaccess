@@ -1,0 +1,9 @@
+RewriteEngine on
+
+# Ignore everything in sub-directories - necessary so assets, etc. can still be loaded
+RewriteCond %{REQUEST_URI}    ^/([^/]+)/.*$  [NC]
+RewriteRule .*                -              [L]
+
+# redirect /path to /#path
+RewriteCond %{REQUEST_URI}    ^/([^/]+)      [NC]
+RewriteRule (.*)              /#%1           [R,NE,L]
