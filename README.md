@@ -1,7 +1,7 @@
 ### Boilerplate to create new site using [CmsLess](https://github.com/alexanderbird/cms-less)
 
 * fork this repo
-  * note that CmsLess is included as a submodule, so [`git clone --recursive`](http://webcache.googleusercontent.com/a/4438292)
+  * note that CmsLess is included as a submodule, so [`git clone --recursive`](http://stackoverflow.com/questions/3796927/how-to-git-clone-including-submodules/4438292#4438292)
 
 |URL|File Served|Contents of `#cms-less-destination` element|
 |---|-----------|-------------------------------------------|
