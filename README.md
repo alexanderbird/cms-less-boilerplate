@@ -2,7 +2,14 @@
 
 * fork this repo
   * note that CmsLess is included as a submodule, so [`git clone --recursive`](http://webcache.googleusercontent.com/a/4438292)
-* `./index.html` is for your header, nav, etc.
-* `./cms-less-content/pagename.html` is for individual pages
-* `<a href="#pagename">Page Name</a>` links to the page found in `./cms-less-content/pagename.html`
-* refer to [CmsLess documentation](https://github.com/alexanderbird/cms-less) for more details
+
+|URL|File Served|Contents of `#cms-less-destination` element|
+|---|-----------|-------------------------------------------|
+|example.com/|`./index.html`|`./cms-less-content/index.html`|
+|example.com/index.html|`./index.html`|`./cms-less-content/index.html`|
+|example.com/#index|`./index.html`|`./cms-less-content/index.html`|
+|example.com/#other_page|`./index.html`|`./cms-less-content/other_page.html`|
+|example.com/#any_missing_page|`./index.html`|`./cms-less-content/404.html`|
+|example.com/#other_page-anchor|`./index.html`|`./cms-less-content/other_page.html`|
+
+refer to [CmsLess documentation](https://github.com/alexanderbird/cms-less) for more details
