@@ -13,3 +13,5 @@
 |example.com/#other_page-anchor|`./index.html`|`./cms-less-content/other_page.html`|
 
 refer to [CmsLess documentation](https://github.com/alexanderbird/cms-less) for more details
+
+live (ugly) demo at http://cms-less.abird.ca
