@@ -1,9 +1,18 @@
-RewriteEngine on
+Options +FollowSymlinks
 
-# Ignore everything in sub-directories - necessary so assets, etc. can still be loaded
-RewriteCond %{REQUEST_URI}    ^/([^/]+)/.*$  [NC]
-RewriteRule .*                -              [L]
+RewriteEngine On
 
-# redirect /path to /#path
-RewriteCond %{REQUEST_URI}    ^/([^/]+)      [NC]
-RewriteRule (.*)              /#%1           [R,NE,L]
+# For Google's crawlers, use crawlers.php instead of index.html
+# The depends on your progressive enhancement - by default link to "/p/page"
+# CmsLess automatically converts links to #page
+RewriteCond %{REQUEST_URI}    ^/p/(.*)$                               [NC]
+RewriteRule .*                /cms-less-content/crawlers.php?p=%1     [L]
+
+# For assets and page content at /path/subdirectory, do nothing
+RewriteCond %{REQUEST_URI}    ^/([^/]+)/.*$                           [NC]
+RewriteRule .*                -                                       [L]
+
+# Redirect /path to /#path
+RewriteCond %{REQUEST_URI}    ^/([^/]+)                               [NC]
+RewriteRule (.*)              /#%1                                    [R,NE,L]
+
