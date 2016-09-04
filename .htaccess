@@ -2,17 +2,29 @@ Options +FollowSymlinks
 
 RewriteEngine On
 
-# For Google's crawlers, use crawlers.php instead of index.html
-# The depends on your progressive enhancement - by default link to "/p/page"
-# CmsLess automatically converts links to #page
-RewriteCond %{REQUEST_URI}    ^/p/(.*)$                               [NC]
+# If JavaScript is enabled, links are progressively enhanced from /path 
+# to /-#path, which arrives here as /- 
+# Serve up an empty index.html and the JavaScript front end takes
+# care of the rest
+RewriteCond %{REQUEST_URI}    ^/-$                                    [NC]
+RewriteRule .*                /index.html?skip_preprocessing=true     [L]
+
+# Whatup bird. So there's a bug with the landing page with JavaScript enabled
+# FOUC
+
+# Any single page names /page /foobar-baz /etc are passed off to the 
+# PHP back-end
+RewriteCond %{REQUEST_URI}    ^/$                                     [NC]
+RewriteRule .*                /cms-less-content/crawlers.php?p=index  [L]
+
+# Respect the skip_preprocessing flag
+RewriteCond %{QUERY_STRING}   ^(?!skip_preprocessing=true)$               [NC]
+RewriteCond %{REQUEST_URI}    ^/([^/]+)$                              [NC]
 RewriteRule .*                /cms-less-content/crawlers.php?p=%1     [L]
 
 # For assets and page content at /path/subdirectory, do nothing
 RewriteCond %{REQUEST_URI}    ^/([^/]+)/.*$                           [NC]
 RewriteRule .*                -                                       [L]
 
-# Redirect /path to /#path
-RewriteCond %{REQUEST_URI}    ^/([^/]+)                               [NC]
-RewriteRule (.*)              /#%1                                    [R,NE,L]
+
 
