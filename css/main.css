@@ -1,0 +1,19 @@
+/* placeholder with some height while the first page is loading */
+#cms-less-content-placeholder {
+	display: block;
+	height: 100vh;
+}
+
+/* CSS for demo, no harm in deleting it */
+code {
+  background: #EFF0F1;
+}
+
+#footer {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2em;
+}
